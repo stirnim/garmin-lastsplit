@@ -4,9 +4,11 @@ Last Split - a Garmin [Connect IQ](https://developer.garmin.com/connect-iq/overv
 
 # Goal
 
-Last Split displays the pace of the last km or mile (depending on your watch setting) at any time during an activity. It is useful to pace yourself evenly on a flat course. I use to together with the built-in current and average pace.
+Last Split displays the pace of the last km or mile (depending on your watch setting) at any time during an activity. It is useful to pace yourself evenly on a flat course. I use it to together with the built-in current and average pace.
 
-You can think of it as if you had Auto Laps enabled but instead of only showing you the pace (or time) after each lap you can look at it at any time during an anctivity. 
+You can think of it as if you had Auto Laps enabled but instead of only showing you the pace (or time) after each lap you can look at it at any time during an activity.
+
+Restrictions: the slowest pace it can record is 15:00 minutes per km or mile.
 
 # Implementation
 
