@@ -1,0 +1,7 @@
+<strings>
+    <string id="AppName">LastSplit</string>
+    <string id="label">SPLIT PACE</string>
+    <string id="fitSummaryDataName">fastest_pace</string>
+    <string id="fitSummaryDataLabel">Fastest KM</string>
+    <string id="fitSummaryDataUnit">m/s</string>
+</strings>
