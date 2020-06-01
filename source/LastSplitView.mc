@@ -18,8 +18,10 @@ class LastSplitView extends WatchUi.SimpleDataField {
     hidden var distanceWindow;
     hidden var lastElapsedDistance;
     // Fit
+    hidden var isMetric;
     hidden var fastestTime;
-    hidden var fitSummaryfastestTime;
+    hidden var fitFastestKm;
+    hidden var fitFastestMile;
 
 
     function initialize() {
@@ -27,8 +29,10 @@ class LastSplitView extends WatchUi.SimpleDataField {
         mValue = "--:--";
         var watchSettings = System.getDeviceSettings();
         if (watchSettings.distanceUnits == System.UNIT_METRIC) {
+            isMetric = true;
             distance = 1000;
         } else {
+            isMetric = false;
             distance = 1609.344;
         }
         time = 0;
@@ -42,13 +46,18 @@ class LastSplitView extends WatchUi.SimpleDataField {
         fastestTime = 0;
         label = WatchUi.loadResource(Rez.Strings.label);
         
-        // FIT nativeNum from Profile.xlsx [1]
-        // Tab "Messages", Section "ACTIVITY FILE MESSAGES", Category "Session": enhanced_avg_altitude 126, m/s
-        // [1] https://www.thisisant.com/resources/fit-sdk/
-        fitSummaryfastestTime = createField(WatchUi.loadResource(Rez.Strings.fitSummaryDataName), 1, FitContributor.DATA_TYPE_FLOAT,
+        // FIT - we only write to one of the summary fit fields
+        if (isMetric) {
+            fitFastestKm = createField(WatchUi.loadResource(Rez.Strings.fitFastestKmName), 1, FitContributor.DATA_TYPE_STRING,
             { :mesgType => FitContributor.MESG_TYPE_SESSION,
-              :units => WatchUi.loadResource(Rez.Strings.fitSummaryDataUnit),
-              :nativeNum => 126 });
+              :units => WatchUi.loadResource(Rez.Strings.fitFastestKmUnit),
+              :count => 6 });
+        } else {
+            fitFastestMile = createField(WatchUi.loadResource(Rez.Strings.fitFastestMileName), 2, FitContributor.DATA_TYPE_STRING,
+            { :mesgType => FitContributor.MESG_TYPE_SESSION,
+              :units => WatchUi.loadResource(Rez.Strings.fitFastestMileUnit),
+              :count => 6 });
+        }
     }
 
 
@@ -107,13 +116,12 @@ class LastSplitView extends WatchUi.SimpleDataField {
     
     function onTimerStop() {
         // Fit Session - write fastest pace
-        // round time in m/s to 3 digits after decimal point
-        var fastestPace = 0.0;
-        if (fastestTime > 0) {
-            fastestPace = Math.round(1.0 / fastestTime * distance * 1000) / 1000;
+        System.println(Lang.format("Write Summary $1$", [timeToString(fastestTime)]));
+        if (isMetric) {
+            fitFastestKm.setData(timeToString(fastestTime));
+        } else {
+            fitFastestMile.setData(timeToString(fastestTime));
         }
-        System.println(Lang.format("Write Summary $1$", [fastestPace]));
-        fitSummaryfastestTime.setData(fastestPace);
     }
 
     function timeToString(time){

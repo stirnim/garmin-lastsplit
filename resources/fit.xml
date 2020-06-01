@@ -1,6 +1,9 @@
 <fitContributions>
     <!-- SESSION : Session Data Definitions -->
-    <fitField id="1" displayInActivitySummary="true" sortOrder="0" precision="2"
-        dataLabel="@Strings.fitSummaryDataLabel"
-        unitLabel="@Strings.fitSummaryDataUnit" />
+    <fitField id="1" displayInActivitySummary="true" sortOrder="1" precision="2"
+        dataLabel="@Strings.fitFastestKmLabel"
+        unitLabel="@Strings.fitFastestKmUnit" />
+    <fitField id="2" displayInActivitySummary="true" sortOrder="2" precision="2"
+        dataLabel="@Strings.fitFastestMileLabel"
+        unitLabel="@Strings.fitFastestMileUnit" />
 </fitContributions>
