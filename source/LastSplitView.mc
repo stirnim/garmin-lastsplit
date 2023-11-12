@@ -48,15 +48,19 @@ class LastSplitView extends WatchUi.SimpleDataField {
         
         // FIT - we only write to one of the summary fit fields
         if (isMetric) {
-            fitFastestKm = createField(WatchUi.loadResource(Rez.Strings.fitFastestKmName), 1, FitContributor.DATA_TYPE_STRING,
+            fitFastestKm = createField(WatchUi.loadResource(Rez.Strings.fitFastestKmName), 0, FitContributor.DATA_TYPE_STRING,
             { :mesgType => FitContributor.MESG_TYPE_SESSION,
               :units => WatchUi.loadResource(Rez.Strings.fitFastestKmUnit),
               :count => 6 });
+            // set initial FIT contributions value to zero
+            fitFastestKm.setData(mValue);
         } else {
-            fitFastestMile = createField(WatchUi.loadResource(Rez.Strings.fitFastestMileName), 2, FitContributor.DATA_TYPE_STRING,
+            fitFastestMile = createField(WatchUi.loadResource(Rez.Strings.fitFastestMileName), 1, FitContributor.DATA_TYPE_STRING,
             { :mesgType => FitContributor.MESG_TYPE_SESSION,
               :units => WatchUi.loadResource(Rez.Strings.fitFastestMileUnit),
               :count => 6 });
+            // set initial FIT contributions value to zero
+            fitFastestMile.setData(mValue);
         }
     }
 
@@ -112,11 +116,14 @@ class LastSplitView extends WatchUi.SimpleDataField {
         }
         return mValue;
     }
-
     
     function onTimerStop() {
+        writeToFit();
+    }
+
+    function writeToFit() {
         // Fit Session - write fastest pace
-        System.println(Lang.format("Write Summary $1$", [timeToString(fastestTime)]));
+        System.println(Lang.format("Write Fit Session Fastest Pace: $1$", [timeToString(fastestTime)]));
         if (isMetric) {
             fitFastestKm.setData(timeToString(fastestTime));
         } else {

@@ -1,0 +1,19 @@
+<fitContributions>
+    <!-- SESSION : Session Data Definitions -->
+    <fitField id="0"
+		displayInChart="false"
+		displayInActivityLaps="false"
+        displayInActivitySummary="true"
+        sortOrder="1"
+        precision="2"
+        dataLabel="@Strings.fitFastestKmLabel"
+        unitLabel="@Strings.fitFastestKmUnit" />
+    <fitField id="1"
+		displayInChart="false"
+		displayInActivityLaps="false"
+        displayInActivitySummary="true"
+        sortOrder="2"
+        precision="2"
+        dataLabel="@Strings.fitFastestMileLabel"
+        unitLabel="@Strings.fitFastestMileUnit" />
+</fitContributions>

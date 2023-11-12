@@ -2,6 +2,8 @@ using Toybox.Application;
 
 class LastSplitApp extends Application.AppBase {
 
+    var mainView;
+
     function initialize() {
         AppBase.initialize();
     }
@@ -16,7 +18,8 @@ class LastSplitApp extends Application.AppBase {
 
     //! Return the initial view of your application here
     function getInitialView() {
-        return [ new LastSplitView() ];
+        mainView = new LastSplitView();
+        return [ mainView ];
     }
 
 }

@@ -24,6 +24,16 @@ The screenshots below use the Last Split app in the "4 Field B" layout on a Garm
 
 This app is on the Garmin [Connect IQ store](https://apps.garmin.com/en-US/apps/54f85cc9-a908-4a04-8642-f71663de200f).
 
+## Side Loading
+
 You can also build it for your watch yourself and install it using [App Side Loading](https://developer.garmin.com/connect-iq/programmers-guide/getting-started). Copy the compiled binary to the USB mounted Garmin watch into the directory `GARMIN/Apps`. On macos you can use [Android File Transfer](https://www.android.com/filetransfer/) as macos lacks good MTP (Media Transfer Protocol) support.
 
-Or use the latest pre-built [binary](./build/LastSplit.prg) for Garmin Forerunner 945.
+Or use the latest pre-built [binary](./build/garminlastsplit.prg) for Garmin Forerunner 965.
+
+Note: side loaded apps don't show data from FIT files in the activity summary in the app or on the web.
+
+# Version History
+
+2023-11-10, Add support for more devices. Indicate supported language (ENG) (0.0.2)
+2020-06-01, Fix unit in FIT activity (0.0.1)
+2020-05-17, Initial release (0.0.0)
