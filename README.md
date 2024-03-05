@@ -34,6 +34,7 @@ Note: side loaded apps don't show data from FIT files in the activity summary in
 
 # Version History
 
+- 2024-03-04, Add support for more Fenix7 devices (0.0.3)
 - 2023-11-10, Add support for more devices. Indicate supported language (ENG) (0.0.2)
 - 2020-06-01, Fix unit in FIT activity (0.0.1)
 - 2020-05-17, Initial release (0.0.0)
